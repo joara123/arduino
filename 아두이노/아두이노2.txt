@@ -1,0 +1,57 @@
+int i=0;
+1.led 3개 점점 켜졌다 점점 작아지기
+void setup() {
+  pinMode(5, OUTPUT);//blue
+  pinMode(6, OUTPUT);//green
+  pinMode(7, OUTPUT);//red
+}
+
+void loop() {
+  for(i=250;i>0;i++){
+    analogWrite(7,i);
+    delay(100);
+  }
+  for(i=250;i>0;i--){
+    analogWrite(7,i);
+    delay(100);
+  }
+  
+    for(i=0;i<256;i++){
+    analogWrite(6,i);
+    delay(100);
+  }
+  for(i=250;i>0;i--){
+    analogWrite(6,i);
+    delay(100);
+  }
+  
+    for(i=0;i<256;i++){
+    analogWrite(5,i);
+    delay(100);
+  }
+  for(i=250;i>0;i--){
+    analogWrite(5,i);
+    delay(100);
+  }
+}
+
+2.조도센서사용
+const int sensorPin = 0;
+int lightLevel;
+
+void setup(){
+  pinMode(5,OUTPUT);
+  pinMode(6,OUTPUT);
+  pinMode(7,OUTPUT);
+}
+void loop(){
+  lightLevel = analogRead(sensorPin);
+  manualTune();
+  analogWrite(5, lightLevel);
+  analogWrite(6, lightLevel);
+  analogWrite(7, lightLevel);
+}
+void manualTune(){
+  lightLevel=map(lightLevel, 500, 1023, 0, 255);
+  lightLevel=constrain(lightLevel, 0, 255);
+}

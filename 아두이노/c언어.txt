@@ -1,0 +1,5 @@
+void input_arr(struck book* mb){
+	for ¹®
+}
+
+int total_amont(struct mybook* bk)
